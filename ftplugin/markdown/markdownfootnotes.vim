@@ -102,24 +102,14 @@ endif
 
 " Mappings
 if !hasmapto('<Plug>AddVimFootnote', 'i')
-	imap <buffer> <Leader>f <Plug>AddVimFootnote
+  	inoreabbrev <buffer> [] <c-o>:exe "normal \<Plug>AddVimFootnote"<cr>
 endif
 if !hasmapto('<Plug>AddVimFootnote', 'n')
     nmap <buffer> <Leader>f <Plug>AddVimFootnote
 endif
 
-if !hasmapto('<Plug>ReturnFromFootnote', 'i')
-    imap <buffer> <Leader>r <Plug>ReturnFromFootnote
-endif
-if !hasmapto('<Plug>ReturnFromFootnote', 'n')
-    nmap <buffer> <Leader>r <Plug>ReturnFromFootnote
-endif
-
 nnoremap <buffer> <Plug>AddVimFootnote :<c-u>call markdownfootnotes#VimFootnotes('a')<CR>
 inoremap <buffer> <Plug>AddVimFootnote <C-O>:<c-u>call markdownfootnotes#VimFootnotes('a')<CR>
-
-inoremap <Plug>ReturnFromFootnote <C-O>:<c-u>q<CR><Right>
-nnoremap <Plug>ReturnFromFootnote :<c-u>q<CR><Right>
 
 " :Footnote commands
 command! -buffer -nargs=1 FootnoteNumber call markdownfootnotes#VimFootnoteNumber(<q-args>)
